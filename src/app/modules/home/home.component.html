@@ -1,45 +1,65 @@
-<div class="home-page">
+<div class="home-page container-fluid">
 
-  <div class="featured-section">
-    <mat-card class="carousel">
-      <mat-card-content>
-        <p>Featured Image Placeholder</p>
-      </mat-card-content>
-      <mat-card-actions class="carousel-controls">
-        <button mat-icon-button>
-          <mat-icon>chevron_left</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>chevron_right</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="row mt-3">
+    <div class="col-md-8">
+      <mat-card class="carousel">
+        <mat-card-content>
+          <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item img active">
+                <img src="assets/images/1.jpg" class="d-block w-100" alt="First slide">
+              </div>
+              <div class="carousel-item img">
+                <img src="assets/images/2.jpg" class="d-block w-100" alt="Second slide">
+              </div>
+              <div class="carousel-item img">
+                <img src="assets/images/1.jpg" class="d-block w-100" alt="Third slide">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-    <mat-card class="featured-details">
-      <mat-card-title>Featured Listings</mat-card-title>
-      <mat-card-content>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac enim consectetur.</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">View Details</button>
-        <button mat-raised-button color="accent">Mark as Favorite</button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="col-md-4">
+      <mat-card class="p-3">
+        <mat-card-title>Featured Listings</mat-card-title>
+        <mat-card-content>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac enim consectetur.</p>
+        </mat-card-content>
+        <div class="row mt-3">
+          <div class="col-md-12 d-flex justify-content-center">
+          <button mat-raised-button color="primary" class="me-3">View Details</button>
+          <button mat-raised-button color="accent">Mark as Favorite</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </div>
 
-  <section class="listings">
+  <section class="p-4">
     <h2>All Listings</h2>
     <div class="listings-container">
       <mat-card *ngFor="let apartment of apartments" class="listing">
+        <img src="assets/images/{{apartment.img}}.jpg" alt="">
         <mat-card-content>
-          <div class="listing-image">Image Placeholder</div>
           <h3>{{ apartment.title }}</h3>
           <p>{{ apartment.description }}</p>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button (click)="viewDetails(apartment)">View Details</button>
+        <div class="row mb-3 mt-3">
+         <div class="col-md-12 d-flex justify-content-center">
+          <button mat-raised-button (click)="viewDetails(apartment)" class="me-3">View Details</button>
           <button mat-raised-button color="accent" (click)="markAsFavorite(apartment)">Mark as Favorite</button>
-        </mat-card-actions>
+         </div>
+        </div>
       </mat-card>
     </div>
   </section>

@@ -9,15 +9,18 @@ export class HomeComponent {
   apartments = [
     {
       title: 'Apartment 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      img: '1'
     },
     {
       title: 'Apartment 2',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      img: '2'
     },
     {
       title: 'Apartment 3',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      img: '1'
     }
   ];
 
