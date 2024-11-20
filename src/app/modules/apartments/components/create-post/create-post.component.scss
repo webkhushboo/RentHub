@@ -1,0 +1,89 @@
+/* property-listing.component.scss */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.listing-card {
+  margin-bottom: 2rem;
+  
+  mat-card-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.lease-type, .price-options {
+  mat-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+mat-radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+// Material overrides
+::ng-deep {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-radio-button, .mat-checkbox {
+    margin: 0.25rem 0;
+  }
+}

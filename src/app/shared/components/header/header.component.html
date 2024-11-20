@@ -1,0 +1,57 @@
+<mat-toolbar class="header-toolbar">
+  <mat-toolbar-row class="px-3">
+    <a routerLink="/" class="brand-link text-decoration-none">
+      <span class="brand-text">RentHub</span>
+    </a>
+
+    <span class="toolbar-spacer"></span>
+
+    <div class="nav-links">
+      <ng-container *ngIf="!isLoggedIn">
+        <a mat-button routerLink="login" routerLinkActive="active-link">
+          Login
+        </a>
+        <a mat-button routerLink="signup" routerLinkActive="active-link">
+          Register
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isLoggedIn">
+        <a mat-button routerLink="profile" routerLinkActive="active-link">
+          Profile
+        </a>
+        <button mat-button (click)="logout()">
+          Logout
+        </button>
+      </ng-container>
+    </div>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <ng-container *ngIf="!isLoggedIn">
+        <a mat-menu-item routerLink="/login">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </a>
+        <a mat-menu-item routerLink="/signup">
+          <mat-icon>person_add</mat-icon>
+          <span>Register</span>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="isLoggedIn">
+        <a mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </a>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </ng-container>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

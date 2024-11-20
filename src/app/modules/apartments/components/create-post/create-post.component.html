@@ -1,0 +1,157 @@
+<!-- property-listing.component.html -->
+<div class="container">
+  <mat-card class="listing-card">
+    <mat-card-header>
+      <mat-card-title>Create New Property Listing</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+        <!-- Building Selection -->
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Choose your Apartment/Building</mat-label>
+            <mat-select formControlName="building" required>
+              <mat-option value="building1">Building 1</mat-option>
+              <mat-option value="building2">Building 2</mat-option>
+            </mat-select>
+            <mat-error *ngIf="createPostForm.get('building')?.hasError('required')">
+              Please select a building
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Building Name</mat-label>
+            <input matInput formControlName="buildingName" required>
+            <mat-error *ngIf="createPostForm.get('buildingName')?.hasError('required')">
+              Building name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Shared Property -->
+        <div class="form-group">
+          <label class="form-label">Is this a shared property?</label>
+          <mat-radio-group formControlName="isShared" required>
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- Location -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Property Location</mat-label>
+          <input matInput formControlName="location" placeholder="Enter street address" required>
+          <mat-error *ngIf="createPostForm.get('location')?.hasError('required')">
+            Address is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Property Details -->
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Square Feet</mat-label>
+            <input matInput type="number" formControlName="squareFeet" required>
+            <mat-error *ngIf="createPostForm.get('squareFeet')?.hasError('required')">
+              Square feet is required
+            </mat-error>
+            <mat-error *ngIf="createPostForm.get('squareFeet')?.hasError('min')">
+              Must be greater than 0
+            </mat-error>
+          </mat-form-field>
+
+          <div class="lease-type">
+            <label class="form-label">Stay / Lease type</label>
+            <mat-radio-group formControlName="leaseType" required>
+              <mat-radio-button value="longTerm">Long term (6+ months)</mat-radio-button>
+              <mat-radio-button value="shortTerm">Short term</mat-radio-button>
+              <mat-radio-button value="both">Both</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <!-- Rent Details -->
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Expected Rent</mat-label>
+            <input matInput type="number" formControlName="rent" required matPrefix>
+            <mat-error *ngIf="createPostForm.get('rent')?.hasError('required')">
+              Rent is required
+            </mat-error>
+            <mat-error *ngIf="createPostForm.get('rent')?.hasError('min')">
+              Must be greater than 0
+            </mat-error>
+          </mat-form-field>
+
+          <div class="price-options">
+            <mat-checkbox formControlName="isNegotiable">
+              Negotiable
+            </mat-checkbox>
+            <mat-radio-group formControlName="priceMode" required>
+              <mat-radio-button value="perMonth">Per Month</mat-radio-button>
+              <mat-radio-button value="utilitiesIncluded">Utilities included in rent</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <!-- Furnished -->
+        <div class="form-group">
+          <label class="form-label">Is the room/apartment furnished?</label>
+          <mat-radio-group formControlName="isFurnished" required>
+            <mat-radio-button value="yes">Yes</mat-radio-button>
+            <mat-radio-button value="no">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- Amenities -->
+        <div class="form-group">
+          <label class="form-label">Amenities included</label>
+          <div class="amenities-grid">
+            <mat-checkbox formControlName="gymFitness">Gym/Fitness Center</mat-checkbox>
+            <mat-checkbox formControlName="swimmingPool">Swimming Pool</mat-checkbox>
+            <mat-checkbox formControlName="carPark">Car Park</mat-checkbox>
+            <mat-checkbox formControlName="visitorParking">Visitor's Parking</mat-checkbox>
+            <mat-checkbox formControlName="powerBackup">Power Backup</mat-checkbox>
+            <mat-checkbox formControlName="garbageDisposal">Garbage Disposal</mat-checkbox>
+            <mat-checkbox formControlName="privateLawn">Private Lawn</mat-checkbox>
+            <mat-checkbox formControlName="waterHeater">Water Heater</mat-checkbox>
+            <mat-checkbox formControlName="plantSecurity">Plant Security System</mat-checkbox>
+            <mat-checkbox formControlName="laundry">Laundry Service</mat-checkbox>
+            <mat-checkbox formControlName="elevator">Elevator</mat-checkbox>
+            <mat-checkbox formControlName="clubHouse">Club House</mat-checkbox>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required>
+          <mat-error *ngIf="createPostForm.get('title')?.hasError('required')">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" rows="4" 
+                  [maxlength]="1400" required></textarea>
+          <mat-hint align="end">{{createPostForm.get('description')?.value?.length || 0}}/1400</mat-hint>
+          <mat-error *ngIf="createPostForm.get('description')?.hasError('required')">
+            Description is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button mat-button type="button" (click)="previewListing()">
+            Preview
+          </button>
+          <button mat-raised-button color="primary" type="submit" 
+                  [disabled]="createPostForm.invalid">
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

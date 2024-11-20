@@ -1,0 +1,47 @@
+.home-page {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.featured-section {
+  display: flex;
+  margin: 20px;
+  gap: 20px;
+}
+
+.carousel {
+  flex: 1;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.featured-details {
+  flex: 1;
+}
+
+.listings {
+  padding: 20px;
+}
+
+.listings-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.listing {
+  flex: 1 1 calc(30% - 20px);
+  min-width: 250px;
+  text-align: center;
+}

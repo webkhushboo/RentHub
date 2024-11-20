@@ -1,0 +1,46 @@
+<div class="home-page">
+
+  <div class="featured-section">
+    <mat-card class="carousel">
+      <mat-card-content>
+        <p>Featured Image Placeholder</p>
+      </mat-card-content>
+      <mat-card-actions class="carousel-controls">
+        <button mat-icon-button>
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="featured-details">
+      <mat-card-title>Featured Listings</mat-card-title>
+      <mat-card-content>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac enim consectetur.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">View Details</button>
+        <button mat-raised-button color="accent">Mark as Favorite</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <section class="listings">
+    <h2>All Listings</h2>
+    <div class="listings-container">
+      <mat-card *ngFor="let apartment of apartments" class="listing">
+        <mat-card-content>
+          <div class="listing-image">Image Placeholder</div>
+          <h3>{{ apartment.title }}</h3>
+          <p>{{ apartment.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="viewDetails(apartment)">View Details</button>
+          <button mat-raised-button color="accent" (click)="markAsFavorite(apartment)">Mark as Favorite</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+</div>
