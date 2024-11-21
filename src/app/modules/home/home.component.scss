@@ -11,11 +11,23 @@
 .listing {
   flex: 1 1 calc(30% - 20px);
   min-width: 250px;
-  text-align: center;
 }
 
-.img {
-  img {
-    height: 300px;
-  }
+.featured-listing {
+  height: 332px;
+}
+
+img {
+  height: 250px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+
+.list {
+  overflow: auto;
+  padding: 0;
 }

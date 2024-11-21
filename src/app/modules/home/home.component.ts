@@ -10,17 +10,17 @@ export class HomeComponent {
     {
       title: 'Apartment 1',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      img: '1'
+      img: 'apartment1'
     },
     {
       title: 'Apartment 2',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      img: '2'
+      img: 'apartment2'
     },
     {
       title: 'Apartment 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      img: '1'
+      img: 'apartment1'
     }
   ];
 
