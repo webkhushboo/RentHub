@@ -24,6 +24,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule
+  ],
+  exports: [
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
