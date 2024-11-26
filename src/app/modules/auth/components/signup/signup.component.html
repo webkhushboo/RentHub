@@ -22,7 +22,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-form-field appearance="outline" class="w-100 mb-3 pb-2">
               <mat-label>Email</mat-label>
               <input matInput type="email" formControlName="email" placeholder="Enter your email">
               <mat-error *ngIf="emailControl?.hasError('required')">
@@ -33,7 +33,7 @@
               </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-form-field appearance="outline" class="w-100 mb-3 pb-2">
               <mat-label>Password</mat-label>
               <input matInput [type]="hidePassword ? 'password' : 'text'" 
                      formControlName="password" 
@@ -70,7 +70,7 @@
               </mat-error>
             </mat-form-field>
 
-            <div class="d-grid gap-2">
+            <div class="d-grid mt-3">
               <button mat-raised-button color="primary" type="submit"
                       [disabled]="signupForm.invalid || isLoading">
                 {{ isLoading ? 'Creating account...' : 'Register' }}
