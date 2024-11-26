@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { ApartmentsComponent } from './apartments.component';
 import { NgModule } from '@angular/core';
@@ -12,11 +12,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ApartmentsRoutingModule } from './apartments-routing.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+
 
 @NgModule({
   declarations: [
     ApartmentsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    PostDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +33,10 @@ import { ApartmentsRoutingModule } from './apartments-routing.module';
     MatButtonModule,
     ReactiveFormsModule,
     MatRadioModule,
-    ApartmentsRoutingModule
+    MatIconModule,
+    MatDialogModule,
+    ApartmentsRoutingModule,
+    FormsModule
   ]
 })
 export class ApartmentsModule { }
