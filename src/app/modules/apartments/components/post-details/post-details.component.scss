@@ -1,0 +1,153 @@
+.property-details-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.property-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  mat-icon {
+    color: #666;
+  }
+}
+
+.info-label {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.location-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+
+  mat-icon {
+    color: #dc3545;
+  }
+}
+
+.lease-details {
+  padding: 1rem;
+
+  .lease-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      mat-icon {
+        color: #666;
+      }
+    }
+  }
+}
+
+.furnishing {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+
+  mat-icon {
+    color: #666;
+  }
+}
+
+.amenities-section {
+  padding: 1rem;
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+
+    mat-icon {
+      color: #28a745;
+    }
+  }
+}
+
+.description-section {
+  padding: 1rem;
+
+  .description-text {
+    margin-top: 0.5rem;
+    line-height: 1.6;
+    color: #666;
+  }
+}
+
+.status-badge {
+  padding: 0.25rem 1rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &.status-available {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  &.status-rented {
+    background: #fce4ec;
+    color: #c2185b;
+  }
+
+  &.status-pending {
+    background: #fff3e0;
+    color: #f57c00;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lease-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

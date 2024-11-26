@@ -1,1 +1,98 @@
-<p>post-details works!</p>
+<div class="post-details-container">
+  <mat-card class="property-card">
+    <!-- Header Section -->
+    <mat-card-header>
+      <mat-card-title>
+        <div class="d-flex justify-content-between align-items-center">
+          <h1>{{ apartmentData.title }}</h1>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Basic Information -->
+      <div class="info-grid mb-4">
+        <div class="info-item">
+          <mat-icon>location_on</mat-icon>
+          <div>
+            <div class="info-label">Location</div>
+            <div class="info-value">{{ apartmentData.location }}</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <mat-icon>payments</mat-icon>
+          <div>
+            <div class="info-label">Price</div>
+            <div class="info-value">₹{{ apartmentData.price | number }}</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <mat-icon>chair</mat-icon>
+          <div>
+            <div class="info-label">Furnishing</div>
+            <div class="info-value">
+              {{ apartmentData.isFurnished ? 'Furnished' : 'Unfurnished' }}
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <mat-icon>restaurant</mat-icon>
+          <div>
+            <div class="info-label">Vegetarian Preferred</div>
+            <div class="info-value">
+              {{ apartmentData.isVegetarianPreferred ? 'Yes' : 'No' }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amenities -->
+      <mat-card class="amenities-section mb-4">
+        <mat-card-subtitle>Amenities</mat-card-subtitle>
+        <div class="amenities-grid">
+          <div *ngFor="let amenity of amenitiesList" class="amenity-item">
+            <mat-icon>{{ amenity.icon }}</mat-icon>
+            <span>{{ amenity.name }}</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Description -->
+      <mat-card class="description-section mt-4">
+        <mat-card-subtitle>Description</mat-card-subtitle>
+        <p class="description-text">{{ apartmentData.description }}</p>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Comments Section -->
+  <mat-card class="comments-section mt-4">
+    <mat-card-subtitle>Comments</mat-card-subtitle>
+
+    <!-- Comment List -->
+    <div *ngIf="comments.length > 0; else noComments">
+      <div *ngFor="let comment of comments" class="comment-item">
+        <mat-icon>person</mat-icon>
+        <div class="comment-text">
+          <span class="comment-user">{{ comment.user }}</span>:
+          <span>{{ comment.text }}</span>
+        </div>
+      </div>
+    </div>
+    <ng-template #noComments>
+      <p>No comments yet. Be the first to comment!</p>
+    </ng-template>
+
+    <!-- Add Comment -->
+    <div class="add-comment mt-4">
+      <mat-form-field class="comment-input" appearance="outline">
+        <mat-label>Add a Comment</mat-label>
+        <input matInput [(ngModel)]="newComment" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addComment()">Post</button>
+    </div>
+  </mat-card>
+</div>
