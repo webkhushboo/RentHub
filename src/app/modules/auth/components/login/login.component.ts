@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '@app/core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private toastrService: ToastrService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,21 +36,13 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe(
         (response) => {
           this.isLoading = false;
-          this.snackBar.open('Successfully logged in!', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top'
-          });
-          this.loginForm.reset(); // Reset the form after successful login
+          this.toastrService.success('Login Successfully !!');
+          this.loginForm.reset();
           this.router.navigate(['home']);
         },
         (error) => {
           this.isLoading = false;
-          this.snackBar.open('Login failed. Please check your credentials.', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'top'
-          });
+          this.toastrService.error('Login failed. Please check your credentials.');
         }
       );
     }

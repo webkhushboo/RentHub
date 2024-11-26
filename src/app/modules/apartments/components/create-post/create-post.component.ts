@@ -1,7 +1,8 @@
-// property-listing.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Post } from '@app/shared/interfaces/apartment.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-post',
@@ -11,7 +12,11 @@ import { Post } from '@app/shared/interfaces/apartment.interface';
 export class CreatePostComponent implements OnInit {
   createPostForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private toastrService: ToastrService
+  ) {
     this.initializeForm();
   }
 
@@ -21,14 +26,14 @@ export class CreatePostComponent implements OnInit {
     this.createPostForm = this.fb.group({
       building: ['', Validators.required],
       buildingName: ['', Validators.required],
-      isShared: ['', Validators.required],
+      isShared: [''],
       location: ['', Validators.required],
-      squareFeet: ['', [Validators.required, Validators.min(1)]],
-      leaseType: ['', Validators.required],
-      rent: ['', [Validators.required, Validators.min(1)]],
+      squareFeet: ['', [Validators.required]],
+      leaseType: [''],
+      rent: ['', [Validators.required]],
       isNegotiable: [false],
-      priceMode: ['', Validators.required],
-      isFurnished: ['', Validators.required],
+      priceMode: [''],
+      isFurnished: [''],
       gymFitness: [false],
       swimmingPool: [false],
       carPark: [false],
@@ -64,24 +69,23 @@ export class CreatePostComponent implements OnInit {
         clubHouse: formValue.clubHouse
       };
 
-      const propertyListing: Post = {
+      const createPostFormValue: Post = {
         ...formValue,
         amenities
       };
 
-      console.log('Form submitted:', propertyListing);
-      // Handle form submission - e.g., call a service to save the data
+      console.log('Form submitted:', createPostFormValue);
+      this.toastrService.success('Post added successfully !!')
+      this.router.navigate(['home'])
     }
   }
 
   previewListing(): void {
     if (this.createPostForm.valid) {
-      // Handle preview logic
       console.log('Preview:', this.createPostForm.value);
     }
   }
 
-  // Helper method to check form control validation
   hasError(controlName: string, errorName: string): boolean {
     return this.createPostForm.get(controlName)?.hasError(errorName) ?? false;
   }
