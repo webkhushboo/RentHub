@@ -6,3 +6,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb-4 {
   margin-bottom: 4px;
 }
+
+.auth-container {
+  .mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+    padding: 0 !important;
+  } 
+  .mat-mdc-form-field-bottom-align::before {
+    height: 13px;
+  } 
+}
