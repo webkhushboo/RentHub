@@ -1,4 +1,4 @@
-<div class="post-details-container">
+<div class="post-details-container pb-3">
   <mat-card class="property-card">
     <!-- Header Section -->
     <mat-card-header>
@@ -69,14 +69,14 @@
   </mat-card>
 
   <!-- Comments Section -->
-  <mat-card class="comments-section mt-4">
+  <mat-card class="comments-section mt-4 ps-3 ms-3 pt-3 me-3 mb-3">
     <mat-card-subtitle>Comments</mat-card-subtitle>
 
     <!-- Comment List -->
     <div *ngIf="comments.length > 0; else noComments">
       <div *ngFor="let comment of comments" class="comment-item">
-        <mat-icon>person</mat-icon>
-        <div class="comment-text">
+        <div class="comment-text d-flex align-items-center mt-3">
+          <mat-icon>person</mat-icon>
           <span class="comment-user">{{ comment.user }}</span>:
           <span>{{ comment.text }}</span>
         </div>
@@ -87,10 +87,10 @@
     </ng-template>
 
     <!-- Add Comment -->
-    <div class="add-comment mt-4">
-      <mat-form-field class="comment-input" appearance="outline">
+    <div class="add-comment mt-4 d-flex gap-2 align-items-center">
+      <mat-form-field class="comment-input col-md-10" appearance="outline">
         <mat-label>Add a Comment</mat-label>
-        <input matInput [(ngModel)]="newComment" />
+        <textarea matInput [(ngModel)]="newComment"></textarea>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="addComment()">Post</button>
     </div>
